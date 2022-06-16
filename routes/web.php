@@ -21,4 +21,5 @@ Route::get('/', function () {
 
 });
 
-Route::get('/sendmail', [EmailController::class, 'sendEmail']);
+
+Route::post('/mail/add', [EmailController::class, 'sendEmail'])->name('location-manage-add');

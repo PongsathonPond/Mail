@@ -3,17 +3,24 @@
 namespace App\Http\Controllers;
 
 use App\Jobs\CustomerJob;
-
+use Illuminate\Http\Request;
 class EmailController extends Controller
 {
     //
-    public function sendEmail()
+
+
+    
+    public function sendEmail(Request $request)
     {
-
-        $name['name'] = 'POND';
-        $email['email'] = 'mapond_gunner@hotmail.com';
+      
+        $name['name'] = 'RMUTI';
+        $email['email'] = $request->email;
+        
         dispatch(new CustomerJob($email, $name));
-
-        dd('asdsa');
+       
+        return redirect()->back()->with('update', "อัพเดตข้อมูลเรียบร้อย");
     }
-}
+
+
+
+ }
