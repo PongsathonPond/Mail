@@ -14,19 +14,23 @@ use Illuminate\Support\Facades\Mail;
 class CustomerJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+
     protected $email;
     protected $name;
+    protected $content;
+
     /**
      * Create a new job instance.
      *
      * @return void
      */
 
-    public function __construct($email, $name)
+    public function __construct($email, $name, $content)
     {
         //
         $this->email = $email;
         $this->name = $name;
+        $this->content = $content;
 
     }
 
@@ -39,6 +43,7 @@ class CustomerJob implements ShouldQueue
     {
         //
 
-        Mail::to($this->email['email'])->send(new Sendmail($this->name['name']));
+        Mail::to($this->email['email'])->send(new Sendmail($this->name['name'], $this->content['content']));
+
     }
 }

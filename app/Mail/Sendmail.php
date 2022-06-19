@@ -15,9 +15,11 @@ class Sendmail extends Mailable
      *
      * @return void
      */
-    public function __construct($name)
+    public function __construct($name, $content)
     {
         $this->name = $name;
+        $this->content = $content;
+
     }
 
     /**
@@ -27,8 +29,9 @@ class Sendmail extends Mailable
      */
     public function build()
     {
+        $test = $this->content;
 
-        return $this->from('from_email@gmail.com', 'POND')->subject('Welcome new user!')->view('welcome')->with("name", $this->name);
+        return $this->from('from_email@gmail.com', 'RMUTI')->subject('รายงานการจองห้อง')->view('email', compact('test'))->with("name", $this->name);
 
     }
 }

@@ -21,4 +21,4 @@ Route::get('/', function () {
 
 });
 
-Route::get('/sendmail', [EmailController::class, 'sendEmail']);
+Route::post('/sendmail', [EmailController::class, 'sendEmail'])->name('addlist');
