@@ -30,7 +30,9 @@ class CustomerJob implements ShouldQueue
         //
         $this->email = $email;
         $this->name = $name;
+
         $this->content = $content;
+
 
     }
 
